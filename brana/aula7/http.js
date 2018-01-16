@@ -1,4 +1,6 @@
-var http = require('http');
+var router = require('./router');
+
+var app = router(7200);
 
 var operadoras = [
 	{nome: "Vivo", codigo: 14, categoria: "Celular", preco: 2},
@@ -12,11 +14,7 @@ var contatos = [
 	[{id: 3, nome: "Mariana", telefone:"7777-8888", data: new Date(), operadora: operadoras[2]}]
 ];
 
-http.createServer(function (req, res) {
-	
-	res.write(JSON.stringify(operadoras));
-	if(req.url === '/operadoras') res.write(JSON.stringify(operadoras));
-	if(req.url === '/contatos') res.write(JSON.stringify(contatos));
-	res.end();
-
-}).listen(2009);
+router.get('/operadoras', function (req, res) {
+		res.write(JSON.stringify(operadoras));
+		res.end();
+});
