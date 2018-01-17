@@ -14,7 +14,12 @@ var contatos = [
 	[{id: 3, nome: "Mariana", telefone:"7777-8888", data: new Date(), operadora: operadoras[2]}]
 ];
 
-router.get('/operadoras', function (req, res) {
+app.get('/operadoras', function (req, res) {
 		res.write(JSON.stringify(operadoras));
+		res.end();
+});
+
+app.get('/contatos', function (req, res) {
+		res.write(JSON.stringify(contatos));
 		res.end();
 });
